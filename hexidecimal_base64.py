@@ -39,13 +39,7 @@ hexidecimalConversion = {
 
 #----------------------------------------------------------------------------------------------------------------------#
 def HexidecimalToBinary(text) -> str:
-    output = ""
-    for char in text.lower():
-        try:
-            output += hexidecimalConversion[char]
-        except Exception as e:
-            print(f"An unexpecteded error occured {e}")
-    return output
+    return ''.join(hexidecimalConversion[char.lower()] for char in text)
 
 ## Adding padding if the remaining chunks do not have 6 bits
 def Padding(binary) -> str:
@@ -56,17 +50,16 @@ def Padding(binary) -> str:
 
 def BinaryToSixBit(binary) -> list:
     binary = Padding(binary)
-
     chunks = []
-    stringChunks = ""
-         
-    for char in binary:
-        stringChunks += char
-        if len(stringChunks) == 6:
-            chunks.append(stringChunks)
-            stringChunks = ""
 
-    return chunks    
+    for i in range(0, len(binary), 6): ## iterates, 0 -> 6 -> 12 -> 18
+        chunks.append(binary[i:i+6]) ## string slice from 0 -> 6
+    return chunks
+
+
+
+def BitsToNumber(bits) -> int:
+    return sum(int(bit) * pow(2, len(bits)-i-1) for i, bit in enumerate(bits))
     
 #----------------------------------------------------------------------------------------------------------------------#
 
