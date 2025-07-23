@@ -38,12 +38,12 @@ hexidecimalConversion = {
     "2" : "0010", "7" : "0111", "c" : "1100",
     "3" : "0011", "8" : "1000", "d" : "1101", 
     "4" : "0100", "9" : "1001", "e" : "1110", 
-    "f" : "1111"  # <-- Add this line
+    "f" : "1111"  
 }
 
 #----------------------------------------------------------------------------------------------------------------------#
 def HexidecimalToBinary(texts: str) -> str:
-    try: 
+    try:
         return ''.join(hexidecimalConversion[char.lower()] for char in texts)
     except Exception as e:
         return f"an exception has an occured {e}"
