@@ -14,7 +14,7 @@ print(f"\n{GREEN}Hex:{RESET} A hexadecimal string is a sequence of characters, t
 print(f"{GREEN}Base64:{RESET}  is a binary-to-text encoding scheme that represents binary data in an ASCII string format using a set of 64 characters.")
 
 print("\nMore context on the implementation of this encoding: \n" \
-      "Convert the Hexidecimal to Binary & convert the Binary into groups of 6bit chunks," \
+      "Convert the Hexadecimal to Binary & convert the Binary into groups of 6bit chunks," \
       "match the 6bit chunks to base64 characters")
 
 time.sleep(0.5)
@@ -36,7 +36,7 @@ class HexToBase64:
         56: "4", 57: "5", 58: "6", 59: "7", 60: "8", 61: "9", 62: "+", 63: "/"
     }
 
-    __private_hexidecimalConversion = {
+    __private_hexadecimalConversion = {
         "0" : "0000", "5" : "0101", "a" : "1010", 
         "1" : "0001", "6" : "0110", "b" : "1011", 
         "2" : "0010", "7" : "0111", "c" : "1100",
@@ -45,9 +45,9 @@ class HexToBase64:
         "f" : "1111"  
     }
 
-    def HexidecimalToBinary(texts: str) -> str:
+    def HexadecimalToBinary(texts: str) -> str:
         try:
-            return ''.join(HexToBase64.__private_hexidecimalConversion[char.lower()] for char in texts)
+            return ''.join(HexToBase64.__private_hexadecimalConversion[char.lower()] for char in texts)
         except Exception as e:
             return f"an exception has an occured {e}"
 
@@ -89,9 +89,9 @@ class HexToBase64:
         else:
             return "Value is not contained in base64"
         
-    def Encoder(cryptography: str) -> str:
+    def Encoder(hexString: str) -> str:
         try:
-            binary = HexToBase64.HexidecimalToBinary(cryptography)
+            binary = HexToBase64.HexadecimalToBinary(hexString)
             sixBit = HexToBase64.BinaryToSixBit(binary)
             numberOutput = [HexToBase64.BitsToNumber(bits) for bits in sixBit]
             return ''.join(HexToBase64.Base64ToText(int(num)) for num in numberOutput)
@@ -102,6 +102,6 @@ class HexToBase64:
 
 #----------------------------------------------------------------------------------------------------------------------#
 
-cryptography = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f"
+hexString = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f"
 
-print(f"{HexToBase64.Encoder(cryptography)} \n")
+print(f"{HexToBase64.Encoder(hexString)} \n")

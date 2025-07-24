@@ -1,7 +1,7 @@
 
 
 
-hexidecimalConversion = {
+hexadecimalConversion = {
         "0" : "0000", "5" : "0101", "a" : "1010", 
         "1" : "0001", "6" : "0110", "b" : "1011", 
         "2" : "0010", "7" : "0111", "c" : "1100",
@@ -18,9 +18,9 @@ print(f"XOR, short for 'exclusive or,' is a logical operation that outputs true 
 def XOROperation(firstCompare: str, secondCompare: str) -> str:
     return "0" if firstCompare == secondCompare else "1"
 
-def HexidecimalToBinary(texts: str) -> str:
+def HexadecimalToBinary(texts: str) -> str:
     try:
-        return ''.join(hexidecimalConversion[char.lower()] for char in texts)
+        return ''.join(hexadecimalConversion[char.lower()] for char in texts)
     except Exception as e:
         return f"an exception has an occured {e}"
     
@@ -40,15 +40,15 @@ def BitsToFourBit(binary: str) -> list:
         return f"an exception has an occured {e}"
     
 
-cryptographyOne = "1c0111001f010100061a024b53535009181c"
-cryptographyTwo = "686974207468652062756c6c277320657965"
+hexStringOne = "1c0111001f010100061a024b53535009181c"
+hexStringTwo = "686974207468652062756c6c277320657965"
         
-binary = ''.join(XOROperation(first, second) for first, second in zip(HexidecimalToBinary(cryptographyOne), HexidecimalToBinary(cryptographyTwo)))
+binary = ''.join(XOROperation(first, second) for first, second in zip(HexadecimalToBinary(hexStringOne), HexadecimalToBinary(hexStringTwo)))
 
 FourBit = BitsToFourBit(binary)
 
-output = ''.join(hexidecimalConversion[bit] for bit in enumerate(FourBit))
+output = ''.join(hexadecimalConversion[bit] for bit in enumerate(FourBit))
 
-binaryToHex = {v: k for k, v in hexidecimalConversion.items()}
+binaryToHex = {v: k for k, v in hexadecimalConversion.items()}
 
 print(FourBit)
