@@ -2,6 +2,7 @@ import time
 
 RED = "\033[3;31m"
 GREEN = "\033[1;32m"
+BLACK = "\033[0;30m"
 RESET = "\033[0m"
 
 
